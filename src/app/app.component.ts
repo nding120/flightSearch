@@ -34,5 +34,11 @@ export class AppComponent {
       started: new Date(15, 1, 2017)
     }
   ];
-  
+  getStatusClass(airline:{instanceType:string,name:string,status:string,started:Date}){
+    return{
+      'listen-group-item-success':airline.status==='stable',
+      'listen-group-item-warning':airline.status==='offline',
+      'listen-group-item-danger':airline.status==='critical'
+    };
+  }
 }
