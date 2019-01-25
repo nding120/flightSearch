@@ -1,17 +1,17 @@
 <div class="container">
   <div class="row">
-    <div class="col-xs-12 col-sm-10 col-md-8">
-      <!-- <input type="text" [(ngModel)]="filterStatus"> -->
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1">
+      <input type="text" [(ngModel)]="filterStatus">
       <hr>
       <ul class="list-group">
         <li class="list-group-item"
-            *ngFor="let flight of flights">
+            *ngFor="let flight of flights ">
             <span class="badge">
               {{flight.status}}
             </span>
             <strong>{{ flight.name }}</strong> |
             {{ flight.instanceType }} |
-            {{ flight.started }}
+            {{ flight.started |date:"yyyy-mm-dd hh:mm:ss"|uppercase}}
         </li>
       </ul>
     </div>
