@@ -1,4 +1,9 @@
 import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { FlightService } from './flight.service';
+import { FlightInfo } from './flightInfo.model';
+import { FormControl } from '@angular/forms';
+import "rxjs/Rx";
 
 @Component({
   selector: 'app-root',
@@ -6,40 +11,38 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.sass']
 })
 export class AppComponent {
-  title = 'flightSrch';
-  
-  filterStatus='';
-  flights= [
-    {
-      instanceType: 'medium',
-      name: 'Production Server',
-      status: 'stable',
-      started: new Date(15, 1, 2017)
-    },
-    {
-      instanceType: 'large',
-      name: 'User Database',
-      status: 'stable',
-      started: new Date(15, 1, 2017)
-    },
-    {
-      instanceType: 'small',
-      name: 'Development Server',
-      status: 'offline',
-      started: new Date(15, 1, 2017)
-    },
-    {
-      instanceType: 'small',
-      name: 'Testing Environment Server',
-      status: 'stable',
-      started: new Date(15, 1, 2017)
-    }
-  ];
-  getStatusClass(airline:{instanceType:string,name:string,status:string,started:Date}){
-    return{
-      'listen-group-item-success':airline.status==='stable',
-      'listen-group-item-warning':airline.status==='offline',
-      'listen-group-item-danger':airline.status==='critical'
-    };
+  private keyword: string;
+  private titleFilter: FormControl=new FormControl(); //use in html, bind data with [FormControl]
+  constructor(private http:HttpClient, private flightService:FlightService){
+    this.titleFilter.valueChanges
+    .debounceTime(500) //no trigger input value when user is type, after finished, it trigger. import'rxjs/Rx'
+    .subscribe(value=>{this.keyword=value});// titleFilter.valueChanges这个字段流，订阅它，传给keyword
   }
+
+  title = 'flightSrch';
+  filterStatus='';
+  
+ 
+  flightInfo: FlightInfo;//FlightInfo[] is wrong???
+  error: Error; //??????
+  ngOnInit(){
+    this.flightService.getFlightInfo()
+    .subscribe((data:FlightInfo)=> {this.flightInfo = data;},
+    error=>this.error=error
+    );
+  //  console.log(this.flightInfo);
+  }
+
+  // //full response
+  // showFlightInfoResponse(){
+  //   this.flightService.getFlightInfoResponse()//HttpResponse<FlightInfos>
+  //   .subscribe(resp=>{ 
+  //     //display headers
+  //     const keys=resp.headers.keys();
+  //     this.headers=keys.map(key=>`${key}:${resp.headers.get(key)}`);
+  //     //access the body , type as flightInfo
+  //     this.flightInfo={...resp.body};
+  //   });
+  // }
 }
+ 

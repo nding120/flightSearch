@@ -1,19 +1,21 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1">
-      <input type="text" [(ngModel)]="filterStatus">
+      <input class="form-control" [formControl]="titleFilter">
+      <!-- <input type="text" [(ngModel)]="filterStatus"> -->
+      <!-- <button (click)="showFlightInfo()"></button> -->
       <hr>
-      <ul class="list-group">
-        <li class="list-group-item"
-            *ngFor="let flight of flights ">
+      <td class="list-group">
+        <tr class="list-group-item"
+            *ngFor="let flight of flightInfo | filter : 'status': keyword ">
             <span class="badge">
               {{flight.status}}
             </span>
-            <strong>{{ flight.name }}</strong> |
-            {{ flight.instanceType }} |
-            {{ flight.started |date:"yyyy-mm-dd hh:mm:ss"|uppercase}}
-        </li>
-      </ul>
+            <strong>{{ flight.number }}</strong> |
+            {{ flight.carrier }} |
+            {{ flight.departure | date:"yyyy-mm-dd hh:mm:ss"| uppercase}}
+          </tr>
+        </td>
     </div>
   </div>
 </div>
