@@ -8,7 +8,7 @@ export class FilterPipe implements PipeTransform {
 
   // transform(value: any, filterString: string, propName:string): any {
   //   //console.log(value.length);//12
-  //   if(filterString===""){
+  //   if(value.length===0||filterString===""){// sometimes value代表的数组或者obj没有长度这个属性
   //     return value;
   //   }
   //   const resultArray=[];
