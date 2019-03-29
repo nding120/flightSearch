@@ -1,4 +1,7 @@
+
+
 export interface FlightInfo {
+    FlightInfoArry
     flightNumber: number;
     carrier: string;
     origin: string;
@@ -10,5 +13,4 @@ export interface FlightInfo {
     travelTime: string;//"02:39",
     status: string;
 
-   
 }

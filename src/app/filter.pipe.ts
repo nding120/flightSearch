@@ -26,8 +26,11 @@ export class FilterPipe implements PipeTransform {
     }
 
     return value.filter(item=>{
-      let filterStringValue=item[filterString];// filterString会被定义为根据x属性过滤信息，把过滤后的值传给value
+      let filterStringValue=item[filterString];
+      //item 是所有集合的元素，就是value中的props，
+      // filterString会被定义为根据x属性过滤信息，把过滤后的值传给value
       return filterStringValue.indexOf(keyword) >=0; //if yes, return true.
     })
   }
 }
+ 

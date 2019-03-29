@@ -1,13 +1,14 @@
 <div class="container">
   <div class="row">
-    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1">
-      <input class="form-control" [formControl]="titleFilter">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1" [formGroup]='flightForm'>
+      
       <!-- <input type="text" [(ngModel)]="filterStatus"> -->
       <!-- <button (click)="showFlightInfo()"></button> -->
+      <input class="form-control" [formControl]="titleFilter" >
       <hr>
       <td class="list-group">
         <tr class="list-group-item"
-            *ngFor="let flight of flightInfo | filter : 'status': keyword ">
+            *ngFor="let flight of flightInfo | filter :'status': keyword ">
             <span class="badge">
               {{flight.status}}
             </span>
@@ -16,6 +17,18 @@
             {{ flight.departure | date:"yyyy-mm-dd hh:mm:ss"| uppercase}}
         </tr>
       </td>
+      <input  placeholder="Choose a user" formControlName='userInput'>
+      <mat-autocomplete #auto="matAutocomplete" [displayWith]="displaySearch">
+        <mat-option *ngIf="isLoading" class="is-loading">
+           <!-- <mat-spinner diameter="50"></mat-spinner>  -->
+        </mat-option>
+        <ng-container *ngIf="!isLoading">
+          <mat-option *ngFor="let items of filteredFlight" [value]="items">
+            <span>{{ items.carrier }}</span>
+          </mat-option>
+        </ng-container>
+      </mat-autocomplete>
+
     </div>
   </div>
 </div>

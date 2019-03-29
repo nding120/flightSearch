@@ -26,7 +26,7 @@
     },
     {
       "flightNumber": "1160",
-      "carrier": "UA",
+      "carrier": "AL",
       "origin": "IAH",
       "departure": "2018-01-31T12:05:00",
       "destination": "ORD",
@@ -38,7 +38,7 @@
     },
     {
       "flightNumber": "1256",
-      "carrier": "UA",
+      "carrier": "AL",
       "origin": "IAH",
       "departure": "2018-01-31T14:22:00",
       "destination": "ORD",
@@ -62,7 +62,7 @@
     },
     {
       "flightNumber": "2155",
-      "carrier": "UA",
+      "carrier": "SA",
       "origin": "IAH",
       "departure": "2018-01-31T18:10:00",
       "destination": "ORD",
@@ -74,7 +74,7 @@
     },
     {
       "flightNumber": "2131",
-      "carrier": "UA",
+      "carrier": "SA",
       "origin": "IAH",
       "departure": "2018-01-31T19:49:00",
       "destination": "ORD",
@@ -86,7 +86,7 @@
     },
     {
       "flightNumber": "2043",
-      "carrier": "UA",
+      "carrier": "CHN",
       "origin": "ORD",
       "departure": "2018-01-31T06:08:00",
       "destination": "IAH",
@@ -98,7 +98,7 @@
     },
     {
       "flightNumber": "0748",
-      "carrier": "UA",
+      "carrier": "CHN",
       "origin": "ORD",
       "departure": "2018-01-31T08:10:00",
       "destination": "IAH",
@@ -110,7 +110,7 @@
     },
     {
       "flightNumber": "2166",
-      "carrier": "UA",
+      "carrier": "BAC",
       "origin": "ORD",
       "departure": "2018-01-31T10:15:00",
       "destination": "IAH",
@@ -122,7 +122,7 @@
     },
     {
       "flightNumber": "2171",
-      "carrier": "UA",
+      "carrier": "BAC",
       "origin": "ORD",
       "departure": "2018-01-31T12:45:00",
       "destination": "IAH",
